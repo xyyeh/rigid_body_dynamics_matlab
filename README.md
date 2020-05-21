@@ -2,8 +2,4 @@
 
 rbdynamics_matlab is a matlab library created for computing dynamics and kinematics of articulated rigid body systems. It is based upon Featherstone's [Roy Featherstone Rigid Body Dynamics Algorithms book](http://www.springer.com/fr/book/9780387743141).
 
-Several useful functionalities are also included to allow user easy setup joint and task space dynamic parameters. These include the computation of the operational space inertia matrix and the bias acceleration that is required in many task-oriented inverse dynamics control algorithms, i.e.
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\Lambda&space;=&space;\left&space;(J&space;A^{-1}&space;J^T&space;\right)^{-1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Lambda&space;=&space;\left&space;(J&space;A^{-1}&space;J^T&space;\right)^{-1}" title="\Lambda = \left (J A^{-1} J^T \right)^{-1}" /></a>
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dot&space;J&space;\dot&space;q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dot&space;J&space;\dot&space;q" title="\dot J \dot q" /></a>
+Several useful functionalities are also included to allow user easy setup joint and task space dynamic parameters. These include the computation of the operational space inertia matrix and the bias acceleration that is required in many task-oriented inverse dynamics control algorithms, i.e. <a href="https://www.codecogs.com/eqnedit.php?latex=\Lambda&space;=&space;\left&space;(J&space;A^{-1}&space;J^T&space;\right)^{-1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Lambda&space;=&space;\left&space;(J&space;A^{-1}&space;J^T&space;\right)^{-1}" title="\Lambda = \left (J A^{-1} J^T \right)^{-1}" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=\dot&space;J&space;\dot&space;q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dot&space;J&space;\dot&space;q" title="\dot J \dot q" /></a>
