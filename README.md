@@ -1,4 +1,4 @@
-Rigid Body Dynamics
+Matlab Rigid Body Dynamics Library
 =====
 rbdynamics_matlab is a matlab library created for computing dynamics and kinematics of articulated rigid body systems. It is based upon Featherstone's [Roy Featherstone Rigid Body Dynamics Algorithms book](http://www.springer.com/fr/book/9780387743141).
 
