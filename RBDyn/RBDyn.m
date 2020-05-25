@@ -136,6 +136,13 @@ classdef RBDyn < handle
       obj.J_0N = zeros(6, obj.dof);
       obj.J_0E = zeros(6, obj.dof);
     end
+    
+    function displayBodyNames(obj)
+      %displayBodyNames Displays name of all bodies
+      for i = 1:numel(obj.model.robot.link)
+        disp(obj.model.robot.link{i}.Attributes.name);
+      end
+    end
 
     function setJointPosition(obj,q)
       assert((size(q,1) == obj.dof) && (size(q,2) == 1))
@@ -147,8 +154,39 @@ classdef RBDyn < handle
       obj.dq = dq;
     end
     
+    function calcPoseAtBody(obj,name)
+      %calcPoseAtBody Calculates forward kinematics
+      %   Calculates the mapping from joint space to task space
+      %   pose of last link frame
+      
+      % find index of body
+      b = -1;
+      for i = 1:numel(obj.model.robot.link)
+        if strcmp(obj.model.robot.link{i}.Attributes.name, name)
+          b = i-1;
+          break;
+        end
+      end
+      if (b < 0)
+        disp('Body not found!');
+      end
+      
+      % find joint paths the goes from base to body with this name
+      obj.X_N0 = eye(6);
+      while b > 0
+        XJ = jcalc(obj.smds.jtype{b}, obj.q(b));
+        obj.X_N0 = obj.X_N0*XJ*obj.smds.Xtree{b};
+        b = obj.smds.parent(b);
+      end
+      
+      % convert to homogeneous cordinates, i.e. ^N X_0 to (0_R_N, 0_p_N)
+      T_N0 = pluho(obj.X_N0);
+      obj.R_0N = transpose(getR(T_N0));
+      obj.P_0N = -obj.R_0N*getP(T_N0);
+    end
+    
     function calcPose(obj)
-      %calcKinematics Calculates forward kinematics
+      %calcPose Calculates forward kinematics
       %   Calculates the mapping from joint space to task space
       %   pose of last link frame
       
@@ -168,7 +206,7 @@ classdef RBDyn < handle
     end
     
     function calcPoseAt(obj, T_NE, calcPoseFlag)
-      %calcKinematics Calculates forward kinematics at a given point in the
+      %calcPoseAt Calculates forward kinematics at a given point in the
       %last link frame
       %   Calculates the mapping from joint space to task space
       %   pose of a given frame at last link
