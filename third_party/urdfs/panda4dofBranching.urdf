@@ -128,6 +128,62 @@
         <axis xyz="0 0 1"/>
         <limit effort="87" lower="-3.1416" upper="0.0" velocity="2.1750"/>
     </joint>
+
+    <link name="panda_link5">
+        <visual>
+            <geometry>
+                <mesh filename="link3.stl"/>
+            </geometry>
+            <material name="panda_white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="link3.stl"/>
+            </geometry>
+            <material name="panda_white"/>
+        </collision>
+        <inertial>
+            <mass value="2.38" />
+            <origin xyz="0.0469893 0.0316374 -0.031704" rpy="0 0 0" />
+            <inertia ixx="0.00771376630908" ixy="-0.00248490625138" ixz="-0.00332147581033" iyy="0.00989108008727" iyz="-0.00217796151484" izz="0.00811723558464" />
+        </inertial>
+    </link>
+    <joint name="panda_joint5" type="revolute">
+        <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+        <origin rpy="1.57079632679 0 0" xyz="0 -0.316 0"/>
+        <parent link="panda_link2"/>
+        <child link="panda_link5"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="87" lower="-2.9671" upper="2.9671" velocity="2.1750"/>
+    </joint>
+    <link name="panda_link6">
+        <visual>
+            <geometry>
+                <mesh filename="link4.stl"/>
+            </geometry>
+            <material name="panda_white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="link4.stl"/>
+            </geometry>
+            <material name="panda_white"/>
+        </collision>
+        <inertial>
+            <mass value="2.38" />
+            <origin xyz="-0.0360446 0.0336853 0.031882" rpy="0 0 0" />
+            <inertia ixx="0.00799663881132" ixy="0.00347095570217" ixz="-0.00241222942995" iyy="0.00825390705278" iyz="0.00235774044121" izz="0.0102515004345" />
+        </inertial>
+    </link>
+    <joint name="panda_joint6" type="revolute">
+        <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0718" soft_upper_limit="-0.0698"/>
+        <origin rpy="1.57079632679 0 0" xyz="0.0825 0 0"/>
+        <parent link="panda_link5"/>
+        <child link="panda_link6"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="87" lower="-3.1416" upper="0.0" velocity="2.1750"/>
+    </joint>
+
     <material name="panda_white">
         <color rgba="1. 1. 1. 1."/>
     </material>

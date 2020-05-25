@@ -63,8 +63,7 @@ r.J_0N*r.dq
 disp('body J*dq');
 r.calcBodyJacobian(r.dof)*r.dq
 
-
-
+disp('get gravity vector');
 r.getGravity()
 
 rmpath('./RBDyn/');
